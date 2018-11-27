@@ -18,4 +18,12 @@ public class Cliente extends Pessoas {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+    @Override
+    public String toString() {
+        return getNome() + " "+getNome_usuario()+ " "+ getRua()+"  "+ getBairro() +" "+ getCEP()+
+                getCidade() +" "+ getData_nasc() +" "+ getEmail() +" "+ getSexo() +
+                " "+ getTelefone() + "/n";
+    }
+        
 }

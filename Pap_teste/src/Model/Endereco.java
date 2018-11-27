@@ -35,4 +35,9 @@ public  abstract class Endereco {
 	public void setCEP(String cEP) {
 		CEP = cEP;
 	}
+
+        public String getRua() {
+            return Rua;
+        }
+       
 }

@@ -3,17 +3,29 @@ package Model;
 import java.util.Date;
 
 public class Medicamento {
-	private String descrição;
+        private String preco;
+	private String descricao;
 	private String nome;
 	private int dose;
-	private Date validade;
+	private String validade;
 	private String id;
+        private String quantidade;
+
+    public String getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(String quantidade) {
+        this.quantidade = quantidade;
+    }
+        
+        
 	
-	public String getDescrição() {
-		return descrição;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setDescrição(String descrição) {
-		this.descrição = descrição;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	public String getNome() {
 		return nome;
@@ -27,10 +39,10 @@ public class Medicamento {
 	public void setDose(int dose) {
 		this.dose = dose;
 	}
-	public Date getValidade() {
+	public String getValidade() {
 		return validade;
 	}
-	public void setValidade(Date validade) {
+	public void setValidade(String validade) {
 		this.validade = validade;
 	}
 	public String getId() {
@@ -39,6 +51,15 @@ public class Medicamento {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+    public void setPreco(String preco) {
+        this.preco = preco;
+    }
+        
+    public String getPreco() {
+        return preco;
+    }
+        
 	
 	
 }

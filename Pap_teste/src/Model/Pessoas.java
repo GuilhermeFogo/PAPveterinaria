@@ -1,12 +1,32 @@
 package Model;
 
-public abstract class Pessoas extends Endereco {
+public class Pessoas extends Endereco {
 	private String nome;
 	private String sexo;
 	private String email;
 	private String nome_usuario;
 	private String senha;
 	private String id_pessoa;
+        private String cpf;
+        private String data_nasc;
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getData_nasc() {
+        return data_nasc;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setData_nasc(String data_nasc) {
+        this.data_nasc = data_nasc;
+    }
+        
+        
 	
 	public String getSexo() {
 		return sexo;
@@ -45,4 +65,5 @@ public abstract class Pessoas extends Endereco {
 	public void setId_pessoa(String id_pessoa) {
 		this.id_pessoa = id_pessoa;
 	}
+        
 }

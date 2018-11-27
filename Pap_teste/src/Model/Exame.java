@@ -3,18 +3,16 @@ package Model;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Exame {
+public class Exame extends Pagamento{
 	
-	private Medico veterinario;
-	private Date data_exame;
+	private String data_exame;
 	private String nome;
-	private double preço; 
-	private Animais animal;
-	
-	public Date getData_exame() {
+	private String preco_exame; 
+        private String id_exame;
+	public String getData_exame() {
 		return data_exame;
 	}
-	public void setData_exame(Date data_exame) {
+	public void setData_exame(String data_exame) {
 		this.data_exame = data_exame;
 	}
 	public String getNome() {
@@ -23,16 +21,30 @@ public class Exame {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public double getPreço() {
-		return preço;
-	}
-	public void setPreço(double preço) {
-		this.preço = preço;
+
+        public String getPreco_exame() {
+        return preco_exame;
+        }
+        
+	
+	public void setPreco(String preco) {
+		this.preco_exame = preco;
 	}
 
-	
-	
-	public void emitir_exame() {
-		
-	}
+    public String getId_exame() {
+        return id_exame;
+    }
+
+    public void setId_exame(String id_exame) {
+        this.id_exame = id_exame;
+    }
+
+    @Override
+    public String toString() {
+        return getNome() +" " + getData_exame() +" "+ getId_exame()+ " "+ getPreco()+
+                " "+ getTipo_pagamento()+ "/n";
+    }
+    
+    
+        
 }

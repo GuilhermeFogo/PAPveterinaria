@@ -1,20 +1,15 @@
 package Model;
 
-import java.util.Date;
-import java.util.Scanner;
-
-public class Consulta {
-	private Date data_consulta;
+public class Consulta extends Pagamento{
+	private String data_consulta;
+        private String id;
 	private Cliente cliente;
 	private Medico veterinario;
-	private Pagamento pagamento;
 	private String tipo_consulta;
-	private Medicamento remedio;
-	
-	public Date getData_consulta() {
+	public String getData_consulta() {
 		return data_consulta;
 	}
-	public void setData_consulta(Date data_consulta) {
+	public void setData_consulta(String data_consulta) {
 		this.data_consulta = data_consulta;
 	}
 	public String getTipo_consulta() {
@@ -24,9 +19,24 @@ public class Consulta {
 		this.tipo_consulta = tipo_consulta;
 	}
 	
-	public void Agendamento() {
-		
-	}
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        Cliente cliente = new Cliente();
+        Animais animal = new Animais();
+        return getId() +" "+ getTipo_pagamento()+" " + getData_consulta()+" "+ getTipo_consulta()+
+                " "+ getPreco() +" " + cliente.getNome()+" "+ animal.getNome_animal();
+    }
+        
+    
 	
 	
 

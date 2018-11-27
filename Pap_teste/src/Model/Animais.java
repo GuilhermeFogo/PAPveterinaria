@@ -45,8 +45,14 @@ public class Animais{
 	public void setRaca(String raca) {
 		this.raca = raca;
 	}
+
+    @Override
+    public String toString() {
+        return getNome_animal() +" " + getSexo() +" "+ getRaca()+" "+ getIdade()
+                +" "+ getEspecie()+" "+ getId_animal();
+    }
 	
 	
-	
+
 	
 }

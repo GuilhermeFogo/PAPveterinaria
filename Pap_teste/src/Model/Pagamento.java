@@ -5,15 +5,15 @@ import java.util.Scanner;
 
 public class Pagamento {
 	private Cliente ciente;
-	private double preco;
+	private String preco;
 	private String tipo_pagamento;
 	private Funcionario funcioanrio;
 	private Medico veterinario;
 	
-	public double getPreco() {
+	public String getPreco() {
 		return preco;
 	}
-	public void setPreco(double preco) {
+	public void setPreco(String preco) {
 		this.preco = preco;
 	}
 	public String getTipo_pagamento() {
@@ -23,14 +23,7 @@ public class Pagamento {
 		this.tipo_pagamento = tipo_pagamento;
 	}
 	
-	
-	public void Pagar() {
-		
-	}
-	
-	public double validar_pagamento() {
-		return 0;
-	}
+
 	
 	
 
