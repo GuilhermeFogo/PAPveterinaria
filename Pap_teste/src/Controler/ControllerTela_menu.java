@@ -35,6 +35,7 @@ import Model.DAO.Crud_consulta_exame;
 import View.tela_geral;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -130,7 +131,7 @@ public class ControllerTela_menu {
                 }else if (ev.getSource() == view.getBtn_limpar_remedios()) {
                     limpar_remedio();
                 }else if (ev.getSource() == view.getBtn_mostar_agenda_medicos()) {
-                    
+                    mostrar_agenda_medico();
                 }else if (ev.getSource() == view.getBtn_atualizar_animal()) {
                     alterar_animal();
                 }else if (ev.getSource() == view.getBtn_deletar_animal()) {
@@ -1017,16 +1018,35 @@ public class ControllerTela_menu {
     
     public void mostar_medico(){
         Crud_medico crud_medico = new Crud_medico();
-        List<Medico> lista = null;
+        
         try {
-            lista = crud_medico.buscarMedicos();
+            ResultSet rs = crud_medico.buscarMedicos();
+            
+            while (rs.next()) {
+            Medico medico = new Medico();
+            medico.setBairro(rs.getString("bairro"));
+        medico.setCEP(rs.getString("cep"));
+        medico.setCidade(rs.getString("cidade"));
+        medico.setEmail(rs.getString("email"));
+        medico.setEstado(rs.getString("estado"));
+        medico.setNome(rs.getString("nome_real"));
+        medico.setNome_usuario(rs.getString("nome_usuario"));
+        medico.setRua(rs.getString("rua"));
+        medico.setSexo(rs.getString("sexo"));
+        medico.setTelefone(rs.getString("telefone"));
+        medico.setSenha(rs.getString("senha"));
+        medico.setEspecialidade(rs.getString("especialidade"));
+        medico.setCRV(rs.getString("crv"));
+        medico.setId_pessoa(rs.getString("id_pessoa"));
+        medico.setEmail(rs.getString("email"));
+        medico.setData_nasc(rs.getString("data_nasc"));
+        medico.setSalario(rs.getString("salario"));
+         view.getArea_mostar_medico().append(medico.toString());
+        }
         } catch (SQLException ex) {
             Logger.getLogger(ControllerTela_menu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Medico medico = new Medico();
-        for (int i = 0; i < lista.size(); i++) {
-            view.getArea_mostar_medico().append(lista.toString());
-        }
+        
         
     }
     
@@ -1044,30 +1064,63 @@ public class ControllerTela_menu {
         List<Medicamento> lista = crud_remedio.Busca_Remedio();
         for (Iterator<Medicamento> iterator = lista.iterator(); iterator.hasNext();) {
             Medicamento next = iterator.next();
-            view.getArea_mostrar_remedio().append(lista.toString());
+            view.getArea_mostrar_remedio().append(next.toString());
         }
     }
     
     public void mostar_consulta(){
         Crud_consulta_exame crud_consulta_exame = new Crud_consulta_exame();
-        crud_consulta_exame.buscar_consultas();
-        Consulta consulta = new Consulta();
-        Animais animais = new Animais();
-        Cliente cliente = new Cliente();
+        ResultSet rs = crud_consulta_exame.buscar_consultas();
+        try {
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                Animais animal = new Animais();
+                Consulta consulta = new Consulta();
+                
+                consulta.setData_consulta(rs.getString("data_consulta"));
+                consulta.setPreco(rs.getString("consulta_preco"));
+                consulta.setTipo_pagamento(rs.getString("tipo_pagamento"));
+                animal.setNome_animal(rs.getString("nome_animal"));
+                cliente.setNome(rs.getString("NOME_CLIEMTE"));
+                consulta.setId(rs.getString("id_consulta"));
+            
+        view.getArea_mostar_consultas().append(consulta.toString() + animal.getNome_animal() + cliente.getNome());
+        view.getArea_mostar_consultas2().append(consulta.toString() + animal.getNome_animal() + cliente.getNome());
+            
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerTela_menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        view.getArea_mostar_consultas().append(consulta.toString() + animais.getNome_animal() + cliente.getNome());
-        view.getArea_mostar_consultas2().append(consulta.toString() + animais.getNome_animal() + cliente.getNome());
     }
     public void mostar_exame(){
         Crud_exame crud_exame = new Crud_exame();
-        crud_exame.buscar_exame();
-        Exame exame = new Exame();
-        Animais animais = new Animais();
-        Cliente cliente = new Cliente();
+        ResultSet rs = crud_exame.buscar_exame();
         
-        view.getArea_mostar_exame().append(exame.toString() + animais.getNome_animal() + cliente.getNome());
-        view.getArea_mostar_exame2().append(exame.toString() + animais.getNome_animal() + cliente.getNome());
+        
+        try {
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                Animais animal = new Animais();
+                Exame exame = new Exame();
+                
+                exame.setData_exame(rs.getString("realizado"));
+                exame.setNome(rs.getString("exame"));
+                exame.setPreco(rs.getString("preco"));
+                exame.setTipo_pagamento(rs.getString("tipo_pagamento"));
+                animal.setNome_animal(rs.getString("nome_animal_exame"));
+                cliente.setNome(rs.getString("nome_cliente_exame"));
+                exame.setId_exame(rs.getString("id_exame"));
+            
+            view.getArea_mostar_exame().append(exame.toString() + animal.getNome_animal() + cliente.getNome());
+        view.getArea_mostar_exame2().append(exame.toString() + animal.getNome_animal() + cliente.getNome());
 
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerTela_menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     
@@ -1080,7 +1133,21 @@ public class ControllerTela_menu {
         }
     }
    
-    
+    public void mostrar_agenda_medico(){
+      Crud_medico crud_medico = new Crud_medico();
+      ResultSet rs = crud_medico.agenda_medico();
+      try {
+            while (rs.next()) {
+            Medico medico = new Medico();
+            medico.setHorario(rs.getString("DATA"));
+            
+            view.getArea_mostar_agenda_medico().setText(medico.getHorario());
+            
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerTela_menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     
     

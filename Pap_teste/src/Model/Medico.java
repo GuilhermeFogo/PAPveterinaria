@@ -42,6 +42,16 @@ public class Medico extends Pessoas {
     public void setSalario(String salario) {
         this.salario = salario;
     }
+
+    @Override
+    public String toString() {
+        return getNome() + " "+ getNome_usuario() +" "+ getCEP() + " "+ getRua()+" "+
+        getEstado() + " "+ getCidade() + getData_nasc() + getEmail() + getId_pessoa() +" "+
+        getSalario() +" "+ getSexo() +" "+  getTelefone()
+                ;
+    }
+    
+    
         
         
 	

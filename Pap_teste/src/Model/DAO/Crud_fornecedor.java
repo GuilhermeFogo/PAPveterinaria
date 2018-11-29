@@ -105,6 +105,8 @@ public class Crud_fornecedor {
                 form.setNome_empresa(rs.getString("nome_empresa"));
                 form.setPreco(rs.getString("preco_fornecedor"));
                 form.setTelefone(rs.getString("telefone"));
+                form.setId(rs.getString("id_fornecedor"));
+                
                 lista.add(form);
             }
             rs.close();

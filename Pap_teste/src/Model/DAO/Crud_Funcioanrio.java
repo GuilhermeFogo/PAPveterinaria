@@ -209,6 +209,8 @@ public class Crud_Funcioanrio {
                                 funcionario.setEstado(resultado.getString("estado"));
                                 funcionario.setSalario(resultado.getString("salario"));
                                 funcionario.setSexo(resultado.getString("sexo"));
+                                funcionario.setEmail(resultado.getString("email"));
+                                funcionario.setTelefone(resultado.getString("telefone"));
                                 
                                 lista.add(funcionario);
 			}

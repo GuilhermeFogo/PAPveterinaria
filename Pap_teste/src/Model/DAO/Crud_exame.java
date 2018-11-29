@@ -103,29 +103,17 @@ public class Crud_exame {
         }
     }
     
-    public void buscar_exame(){
+    public ResultSet buscar_exame(){
         try {
             String sql = "select * from exame";
             Statement stm = this.conn.createStatement();
             ResultSet rs = stm.executeQuery(sql);
-            
-            while (rs.next()) {
-                Cliente cliente = new Cliente();
-                Animais animal = new Animais();
-                Exame exame = new Exame();
-                
-            exame.setData_exame(rs.getString("realizado"));
-            exame.setNome(rs.getString("exame"));
-            exame.setPreco(rs.getString("preco"));
-            exame.setTipo_pagamento(rs.getString("tipo_pagamento"));
-            animal.setNome_animal(rs.getString("nome_animal_exame"));
-            cliente.setNome(rs.getString("nome_cliente_exame"));
-            exame.setId_exame(rs.getString("id_exame"));
-            }
+            return  rs;
             
             
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
 }

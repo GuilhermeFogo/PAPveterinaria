@@ -127,6 +127,7 @@ public class Crud_remedio {
                 remedio.setNome(rs.getString("nome"));
                 remedio.setQuantidade(rs.getString("quantidade"));
                 remedio.setValidade(rs.getString("validade"));
+                remedio.setId(rs.getString("id_remedio"));
                 lista.add(remedio);
             }
             

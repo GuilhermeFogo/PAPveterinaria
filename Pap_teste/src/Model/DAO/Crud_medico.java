@@ -199,32 +199,27 @@ public class Crud_medico {
             
     }
     
-    public List<Medico> buscarMedicos() throws SQLException{
+    public ResultSet buscarMedicos() throws SQLException{
         List<Medico> lista = new LinkedList<>();
         String sql = "select * from usuarios_medico";
         Statement stm = this.conn.createStatement();
         ResultSet rs = stm.executeQuery(sql);
-        while (rs.next()) {
-            Medico medico = new Medico();
-            medico.setBairro(rs.getString("bairro"));
-        medico.setCEP(rs.getString("cep"));
-        medico.setCidade(rs.getString("cidade"));
-        medico.setEmail(rs.getString("email"));
-        medico.setEstado(rs.getString("estado"));
-        medico.setNome(rs.getString("nome_real"));
-        medico.setNome_usuario(rs.getString("nome_usuario"));
-        medico.setRua(rs.getString("rua"));
         
-        medico.setTelefone(rs.getString("telefone"));
-        medico.setSenha(rs.getString("senha"));
-        medico.setEspecialidade(rs.getString("especialidade"));
-        medico.setCRV(rs.getString("crv"));
         
-        lista.add(medico);
-            
+        return rs;
+    }
+    
+    
+    public  ResultSet agenda_medico(){
+        try {
+            String sql = "select * from medico";
+            Statement smt = this.conn.createStatement();
+            ResultSet rs = smt.executeQuery(sql);
+            return  rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        rs.close();
-        return lista;
+        return null;
     }
     
 }

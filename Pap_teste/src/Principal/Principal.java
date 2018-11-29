@@ -20,13 +20,6 @@ public class Principal {
         log.control();
         tela1.setVisible(true);
         
-        
-        
-        
-        /* talves no controler deva criara um metodo de peghar_camo_atualizado , isso para todos os btn_alterar_"algo"
-        para realizart uma validação mais precisa.
-        Deve fazer CRT+c no pegar_dadados e adicionar o campo de codigo. na classe controlelr de menu
-        */
     
     }
     

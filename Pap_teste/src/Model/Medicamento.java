@@ -59,7 +59,10 @@ public class Medicamento {
     public String getPreco() {
         return preco;
     }
-        
-	
-	
+
+    @Override
+    public String toString() {
+        return getId() +" " +getNome() +" " +getPreco() +" "+getQuantidade()+" "+ getValidade()
+                + getDescricao()+ getDose();
+    }	
 }

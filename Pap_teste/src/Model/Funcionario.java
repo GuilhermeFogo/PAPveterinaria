@@ -38,8 +38,8 @@ public class Funcionario extends Pessoas {
     @Override
     public String toString() {
         return getNome() + " "+getNome_usuario()+ " "+ getRua()+"  "+ getBairro() +" "+ getCEP()+
-                getSalario() +" "+ getCargo() +" "+ getData_nasc() +" "+ getEmail() +" "+ getSexo() +
-                " "+ getTelefone()+ "/n";
+                getSalario() +" "+ getCargo() +" "+ getEmail() +" "+ getSexo() +
+                " "+ getTelefone();
         
     }
     

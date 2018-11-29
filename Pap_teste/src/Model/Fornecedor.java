@@ -63,7 +63,9 @@ public class Fornecedor {
     @Override
     public String toString() {
         return getNome_contato()+" "+ getNome_empresa()+ " "+ 
-                getPreco()+" "+ getTelefone()+" "+ getId()+"/n";
+                getPreco()+" "+ getTelefone()+" "+ getId()
+                +" "+ getEmail()
+                ;
    }
     
     

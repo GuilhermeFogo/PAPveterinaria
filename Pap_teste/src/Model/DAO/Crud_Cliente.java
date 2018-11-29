@@ -185,7 +185,13 @@ public class Crud_Cliente {
                                 cliente.setEstado(resultado.getString("estado"));
                                 cliente.setRua(resultado.getString("rua"));
                                 cliente.setCidade(resultado.getString("cidade"));
-                                ;
+                                cliente.setBairro(resultado.getString("bairro"));
+                                cliente.setId(resultado.getString("id_pessoa"));
+                                cliente.setId_pessoa(resultado.getString("id_pessoa"));
+                                cliente.setSexo(resultado.getString("sexo"));
+                                cliente.setSenha(resultado.getString("senha"));
+                                cliente.setTelefone(resultado.getString("telefone"));
+                                cliente.setEmail(resultado.getString("email"));
                                 lista.add(cliente);
 			}
 			statement.close();

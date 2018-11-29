@@ -102,29 +102,19 @@ public class Crud_consulta_exame {
     }
     
     
-    public void buscar_consultas(){
+    public ResultSet buscar_consultas(){
         try {
             String sql = "select * from consultas";
             Statement stm = this.conn.createStatement();
             ResultSet rs = stm.executeQuery(sql); 
             
-            while (rs.next()) {
-                Cliente cliente = new Cliente();
-                Animais animal = new Animais();
-                Consulta consulta = new Consulta();
-                
-            consulta.setData_consulta(rs.getString("data_consulta"));
-            consulta.setPreco(rs.getString("consulta_preco"));
-            consulta.setTipo_pagamento(rs.getString("tipo_pagamento"));
-            animal.setNome_animal(rs.getString("nome_animal"));
-            cliente.setNome(rs.getString("NOME_CLIEMTE"));
-            consulta.setId(rs.getString("id_consulta"));
-            }
+            return rs;
             
             
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return null;
     }
     
 }
